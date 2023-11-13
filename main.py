@@ -109,10 +109,10 @@ def astar(draw, grid, start, end):
     count = 0
     open_set = PriorityQueue()
     open_set.put((0, count, start))
-    came_from = {}
+    came_from = {}  # dictionary
     g_score = {box: float("inf") for row in grid for box in row}
-    g_score[start] = 0
-    final_score = {box: float("inf") for row in grid for box in row}
+    g_score[start] = 0 # dictionary that stores the cost of getting from the start node to another node
+    final_score = {box: float("inf") for row in grid for box in row} # dictionary that stores the estimated cost of the cheapest path through the node
     final_score[start] = heu_func(start.getPos(), end.getPos())
 
     open_set_hash = {start}
@@ -154,7 +154,7 @@ def astar(draw, grid, start, end):
 
 def dj_algorithm(draw, grid, start, end):
     came_from = {}
-    queue, visited = deque(), []
+    queue, visited = deque(), [] # dequeue
 
     queue.append(start)
     visited.append(start)
@@ -379,8 +379,7 @@ def main(win, width):
                         start = None
                     elif box == end:
                         end = None
-
-
+                        
     pygame.quit()
 
 
